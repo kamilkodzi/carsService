@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation,AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarsService } from '../cars.service';
 import { Car } from '../models/car';
 import { TotalCostComponent } from '../total-cost/total-cost.component';
@@ -16,11 +17,18 @@ grossCost:number;
 
  cars: Car[];
 
-  constructor(private carsService:CarsService) { }
+  constructor(private carsService:CarsService,
+              private router:Router) { }
 
   ngOnInit() {
     this.loadCars();
   }
+
+goToCarDetails(car:Car){
+  this.router.navigate(['/cars',car.id])
+}
+
+
   loadCars(): void{
     this.carsService.getCars().subscribe((cars)=>{
       this.cars=cars;

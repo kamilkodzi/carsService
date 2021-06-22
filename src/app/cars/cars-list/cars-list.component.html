@@ -62,64 +62,60 @@
 
 <p class="data-header">Add a new car</p>
 <div class="data-container">
-  <form>
+  <form [formGroup]="carForm">
     <div class="row form-group">
       <div class="col-sm-4">
         <label>Model</label>
-        <input type="text" class="form-control" placeholder="model">
+        <input formControlName="model" type="text" class="form-control" placeholder="model">
       </div>
       <div class="col-sm-4">
         <label>Type</label>
-        <input type="text" class="form-control" placeholder="model">
+        <input formControlName="type" type="text" class="form-control" placeholder="type">
       </div>
       <div class="col-sm-4">
         <label>Plate</label>
-        <input type="text" class="form-control" placeholder="model">
+        <input  formControlName="plate" type="text" class="form-control" placeholder="plate">
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-4">
         <label>Delivery date</label>
-        <input type="text" class="form-control" placeholder="delivery date">
+        <input  formControlName="deliveryDate" type="text" class="form-control" placeholder="delivery date">
       </div>
       <div class="col-sm-4">
         <label>Deadline</label>
-        <input type="text" class="form-control" placeholder="deadline">
-      </div>
-      <div class="col-sm-4">
-        <label>Plate</label>
-        <input type="text" class="form-control" placeholder="plate">
+        <input  formControlName="deadline" type="text" class="form-control" placeholder="deadline">
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-4">
         <label>Color</label>
-        <input type="text" class="form-control" placeholder="color">
+        <input  formControlName="color" type="text" class="form-control" placeholder="color">
       </div>
       <div class="col-sm-4">
         <label>Power</label>
-        <input type="text" class="form-control" placeholder="power">
+        <input  formControlName="power" type="text" class="form-control" placeholder="power">
       </div>
       <div class="col-sm-4">
         <label>Cost</label>
-        <input type="text" class="form-control" placeholder="cost">
+        <input formControlName="cost"  type="text" class="form-control" placeholder="cost">
       </div>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-4">
         <label>Client first name</label>
-        <input type="text" class="form-control" placeholder="client first name">
+        <input formControlName="clientFirstName"  type="text" class="form-control" placeholder="client first name">
       </div>
       <div class="col-sm-4">
         <label>Client last name</label>
-        <input type="text" class="form-control" placeholder="client last name">
+        <input  formControlName="clientSurName" type="text" class="form-control" placeholder="client last name">
       </div>
       <div class="col-sm-4">
         <label>Is car fully damaged
-          <Input type="checkbox">
+          <input formControlName="isFullyDamaged"  type="checkbox">
         </label>
       </div>
     </div>
@@ -128,7 +124,7 @@
         <button type="submit" class="btn btn-primary float-right">Add car</button>
       </div>
     </div>
-
-
   </form>
+
+  <pre>{{carForm.value | json}}</pre>
 </div>

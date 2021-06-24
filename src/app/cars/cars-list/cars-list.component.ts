@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarsService } from '../cars.service';
 import { Car } from '../models/car';
@@ -31,17 +31,18 @@ export class CarsListComponent implements OnInit, AfterViewInit {
 
   buildCarForm() {
     return this.formBuilder.group({
-      model: '',
+      model: ['',Validators.required],
       type: '',
-      plate: '',
+      plate: ['',[Validators.required,Validators.minLength(3),Validators.maxLength(7)]],
       deliveryDate: '',
       deadline: '',
       color: '',
       power: '',
       clientFirstName: '',
-      clientSurName: '',
+      clientSurname: '',
       cost: '',
-      isFullyDamaged: ''
+      isFullyDamaged: '',
+      year:''
     });
   }
 
@@ -55,6 +56,12 @@ export class CarsListComponent implements OnInit, AfterViewInit {
       this.cars = cars;
       this.countTotalCost();
     })
+  }
+
+  addCar(){
+    this.carsService.addCar(this.carForm.value).subscribe(()=>{
+      this.loadCars();
+    });
   }
 
   ngAfterViewInit() {

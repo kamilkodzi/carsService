@@ -81,4 +81,11 @@ export class CarsListComponent implements OnInit, AfterViewInit {
   onShownGross(grossCost: number): void {
     this.grossCost = grossCost
   }
+
+  removeCar(car:Car,event){
+    event.stopPropagation();
+    this.carsService.removeCar(car.id).subscribe(()=>{
+      this.loadCars();
+    });
+  }
 }
